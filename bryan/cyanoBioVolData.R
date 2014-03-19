@@ -244,8 +244,6 @@ i<-1
 plotNorm(Vars[i]) 
 i<-i+1
 
-plotNorm('ANC') 
-summary(bioV$ANC)
 
 #Untransformed Variables
   Raw<-c('AlbersX','AlbersY','DO2_2M','PH_FIELD','TminW','TmaxW','TmeanW',
@@ -276,24 +274,16 @@ TbioV<-data.frame(bioV$NLA_ID,bioV[,Raw],log(bioV[,Log]),log1p(bioV[,Log1p]))
   testInf<-function(x) table(is.infinite(x))
     apply(TbioV[,-1],2,testInf)
 
-
-
-x<-TbioV$Log10CHLA
-table(is.nan(x))
-
-
-
-#save the data
+##################save the data
   bioV_BuildDate<-Sys.Date()  #date the data were built
-  Save<-paste("C:/Bryan/PortableApps/R/scripts/cyanoLakes/bryan/",v,".rda",sep='')  #path to file
-save(bioV,bioV_BuildDate,TbioV,file=Save) 
-Save  #copy and paste below
+  save(bioV_BuildDate,bioV,TbioV,
+       file='C:/Bryan/PortableApps/R/scripts/cyanoLakes/bryan/cyanoBioVolData.rda')  
 
 
+####################Load the NLA Data and Biovolume Data
+  #Data Definitions:  
+    browseURL('https://github.com/jhollist/cyanoLakes/blob/master/bryan/cyanoBioVolData.md')
+  #Get the Data
+    load('https://github.com/jhollist/cyanoLakes/blob/master/bryan/cyanoBioVolData.rda')
 
-load('C:/Bryan/PortableApps/R/scripts/cyanoLakes/bryan/cyanoBioVolData.rda')
-
-logP<-function(x) data.frame(Raw=x,Log=log(x),LogP=log1p(x))
-logP(0)
-logP(.1)
 
