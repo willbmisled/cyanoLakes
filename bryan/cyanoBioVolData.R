@@ -284,6 +284,4 @@ TbioV<-data.frame(bioV$NLA_ID,bioV[,Raw],log(bioV[,Log]),log1p(bioV[,Log1p]))
   #Data Definitions:  
     browseURL('https://github.com/jhollist/cyanoLakes/blob/master/bryan/cyanoBioVolData.md')
   #Get the Data
-    load('https://github.com/jhollist/cyanoLakes/blob/master/bryan/cyanoBioVolData.rda')
-
-
+    load(url('https://raw.github.com/jhollist/cyanoLakes/master/bryan/cyanoBioVolData.rda'))

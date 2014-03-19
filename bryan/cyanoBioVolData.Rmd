@@ -6,8 +6,21 @@ cyanoBioVolData.RDA Data Defintions
 - bioV_BuildDate: is the date of the last data build
 - bioV: a dataframe with the NLA data and the Biovolumes (see definitions below)
 - TbioV: the continuous numerical data from bioV that was transformed to reduce left skew (see below)
-************
 
+
+************
+The following code will open this data definitions file in a browser:
+************
+  #Data Definitions:
+  
+    browseURL('https://github.com/jhollist/cyanoLakes/blob/master/bryan/cyanoBioVolData.md')
+************
+The data can be loaded into R with the following code:
+************
+  #Get the Data
+  
+    load(url('https://raw.github.com/jhollist/cyanoLakes/master/bryan/cyanoBioVolData.rda'))
+************
 **bioV**: NLA water quality data, NLA microcystin data, and biovolume data from Lester Yuan.
 
 'data.frame':  1148 obs. of  68 variables: 
