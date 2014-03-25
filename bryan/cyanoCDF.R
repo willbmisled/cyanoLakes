@@ -13,16 +13,16 @@ a$mcPlus.01<-a$Microcystin_ugl+.01  #most of the Microcystin values are zero.  A
   with(a,table(bvCat,TS_CHLA))
 
 #subset the data by bvCat
-  LOW<-subset(bioV,bioV$bvCat=="LOW")  
-  MED<-subset(bioV,bioV$bvCat=="MED") 
-  HIGH<-subset(bioV,bioV$bvCat=="HIGH") 
+  LOW<-subset(a,bioV$bvCat=="LOW")  
+  MED<-subset(a,bioV$bvCat=="MED") 
+  HIGH<-subset(a,bioV$bvCat=="HIGH") 
 
 
 fPlotCDF<-function(x){  #x is the variable name as character e.g. 'CHLA', 'NTL', 'PTL'
   Low<-LOW[,x]
   Med<-MED[,x]
   High<-HIGH[,x]
-  plot(ecdf(Low),col=Color[1],xlim=c(min(bioV[,x],na.rm=T),max(bioV[,x],na.rm=T)),log='x',
+  plot(ecdf(Low),col=Color[1],xlim=c(min(a[,x],na.rm=T),max(a[,x],na.rm=T)),log='x',
        xlab=x,ylab='CDF',
        main='Cummulative Distribution Function by Cyano Biovolume Category')
   abline(h=.5,col='blue')
@@ -32,6 +32,7 @@ fPlotCDF<-function(x){  #x is the variable name as character e.g. 'CHLA', 'NTL',
   mtext(paste(v,'.r ',Sys.Date(),sep='') ,1,3,adj=1,cex=.7)
 }
 
+par(mfrow=c(1,1))
 Color<-c('green','orange','red')
 fPlotCDF('CHLA')
 fPlotCDF('NTL')
